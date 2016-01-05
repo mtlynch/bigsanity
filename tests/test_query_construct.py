@@ -72,7 +72,6 @@ class TableEquivalenceQueryGeneratorTest(QueryGeneratorTest):
         SELECT
             test_id
         FROM
-            plx.google:m_lab.2009_02.all,
             plx.google:m_lab.2009_03.all,
             plx.google:m_lab.2009_04.all
         WHERE
@@ -186,7 +185,6 @@ class TableEquivalenceQueryGeneratorTest(QueryGeneratorTest):
         SELECT
             test_id
         FROM
-            plx.google:m_lab.2009_02.all,
             plx.google:m_lab.2009_03.all,
             plx.google:m_lab.2009_04.all
         WHERE

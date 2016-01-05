@@ -64,12 +64,12 @@ class TableNamesTest(unittest.TestCase):
              'plx.google:m_lab.2009_03.all'), table_names.monthly_tables(
                  datetime.datetime(2009, 2, 11), datetime.datetime(2009, 3, 1)))
 
-        # Including the 1-day buffer, 2012-01-01 spills over into the previous
+        # Including the 1-day buffer, 2012-01-01 spills over into the subsequent
         # month's table.
         self.assertSequenceEqual(
-            ('plx.google:m_lab.2011_12.all', 'plx.google:m_lab.2012_01.all',
-             'plx.google:m_lab.2012_02.all'), table_names.monthly_tables(
-                 datetime.datetime(2012, 1, 1), datetime.datetime(2012, 2, 1)))
+            ('plx.google:m_lab.2012_01.all', 'plx.google:m_lab.2012_02.all'),
+            table_names.monthly_tables(
+                datetime.datetime(2012, 1, 1), datetime.datetime(2012, 2, 1)))
 
 
 if __name__ == '__main__':

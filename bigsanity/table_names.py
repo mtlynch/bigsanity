@@ -50,11 +50,14 @@ def monthly_tables(time_range_start, time_range_end):
         raise ValueError('time_range_end (%s) is out of range' % time_range_end)
     day_delta = relativedelta.relativedelta(days=1)
     tables = set()
-    # We add adjacent days here because a bug in BigQuery causes a handful of
-    # tests to be published in the next or previous month if their log_time is
-    # very close to the month border.
-    current_time = max(MIN_TABLE_MONTH, time_range_start - day_delta)
+    current_time = time_range_start
+
+    # We add an adjacent day here because a bug in BigQuery causes a handful of
+    # tests to be published in the preceding month if their log_time is very
+    # close to the month border (e.g. a test on 2015-12-01T00:00:05 might appear
+    # in the 2015_11 table rather than 2015_12).
     time_limit = min(MAX_TABLE_MONTH, time_range_end + day_delta)
+
     # Keep incrementing current_time by 1 day until we reach the end of the
     # range. This is not optimal for efficiency, but it is simple.
     while current_time < time_limit:
