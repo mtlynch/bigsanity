@@ -114,4 +114,4 @@ def per_project_table(project):
 
 
 def _format_table(table_name):
-    return 'plx.google:m_lab.%s.all' % table_name
+    return 'plx.google:m_lab.%s_tmp.all' % table_name
